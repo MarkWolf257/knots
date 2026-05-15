@@ -1,0 +1,37 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+---
+
+<RootLayout>
+  <form id="signup-form">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" name="name" required />
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required />
+    </div>
+    <button>Login</button>
+  </form>
+
+  <script>
+    import { authClient } from "@/lib/auth-client";
+
+    const form = document.getElementsByTagName('form').namedItem("signup-form");
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      await authClient.signUp.email({
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+        name: formData.get("name") as string,
+      });
+    });
+  </script>
+</RootLayout>

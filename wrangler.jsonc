@@ -1,6 +1,6 @@
 {
 	"compatibility_date": "2026-04-21",
-	"compatibility_flags": ["global_fetch_strictly_public"],
+	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
 	"name": "knots",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
@@ -9,5 +9,11 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "knots-d1",
+    "database_id": "49eb2c3f-66f5-4f32-8c08-dbe1fa13aec5",
+    "migrations_dir": "./drizzle"
+  }]
 }
